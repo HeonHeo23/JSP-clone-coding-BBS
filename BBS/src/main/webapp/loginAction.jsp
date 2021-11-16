@@ -17,6 +17,7 @@
 		UserDAO userDAO = new UserDAO();
 		int result = userDAO.login(user.getUserID(), user.getUserPassword());
 		if (result == 1){
+			session.setAttribute("userID", user.getUserID());
 			PrintWriter script = response.getWriter();
 			script.println("<script type=\"text/javascript\">");
 			script.println("location.href = 'main.jsp'");
@@ -46,7 +47,5 @@
 			script.println("</script>");	
 		}
 	%>
-	<script type="text/javascript">
-	</script>
 </body>
 </html>
