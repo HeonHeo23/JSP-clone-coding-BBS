@@ -15,8 +15,8 @@
 <body>
 	<%
 		String userID = null;
-		if(session.getAttribute("userId") != null){
-			userID = (String) session.getAttribute("userId");
+		if(session.getAttribute("userID") != null){
+			userID = (String) session.getAttribute("userID");
 		}
 		if (userID != null){
 			PrintWriter script = response.getWriter();
@@ -43,7 +43,6 @@
 		}
 		else if (result == -1){
 			PrintWriter script = response.getWriter();
-			script.println("ㅎㅇ");
 			script.println("<script type=\"text/javascript\">");
 			script.println("alert('아이디가 존재하지 않습니다.');");
 			script.println("history.back()");
