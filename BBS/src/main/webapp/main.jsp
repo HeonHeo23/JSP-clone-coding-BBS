@@ -62,6 +62,15 @@
 			%>
 		</div>
 	</nav>
+	<div class="container">
+		<div class="jumbotron">
+			<div class="container">
+				<h1>웹 사이트 소개</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. t enim ad minim veniam, quis nostrud exercitation.</p>
+				<p><a class="btn btn-primary btn-pull" href="#" role="button">바로가기</a></p>
+			</div>
+		</div>
+	</div>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
 </body>
