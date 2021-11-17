@@ -27,37 +27,42 @@
 			script.println("history.back()");
 			script.println("</script>");	
 		}
+		response.getWriter().println(bbsID);
 		Bbs bbs = new BbsDAO().getBbs(bbsID);
-		if (!userID.equals(bbs.getUserID())){
-			PrintWriter script = response.getWriter();
-			script.println("<script>");
-			script.println("alert('글 수정 권한이 없습니다.')");
-			script.println("history.back()");
-			script.println("</script>");	
-		} else {
-			if (request.getParameter("bbsTitle") == null || request.getParameter("bbsContent") == null) {
+		try {
+			if (!userID.equals(bbs.getUserID())){
 				PrintWriter script = response.getWriter();
 				script.println("<script>");
-				script.println("alert('입력이 안 된 사항이 있습니다.')");
+				script.println("alert('글 수정 권한이 없습니다.')");
 				script.println("history.back()");
-				script.println("</script>");
+				script.println("</script>");	
 			} else {
-				BbsDAO bbsDAO = new BbsDAO();
-				int result = bbsDAO.update(request.getParameter("bbsTitle"), request.getParameter("bbsContent"), bbsID);
-				if (result == -1){
+				if (request.getParameter("bbsTitle") == null || request.getParameter("bbsContent") == null) {
 					PrintWriter script = response.getWriter();
 					script.println("<script>");
-					script.println("alert('글 수정에 실패했습니다.')");
+					script.println("alert('입력이 안 된 사항이 있습니다.')");
 					script.println("history.back()");
-					script.println("</script>");			
-				}
-				else {
-					PrintWriter script = response.getWriter();
-					script.println("<script>");
-					script.println("location.href = 'bbs.jsp'");
-					script.println("</script>");	
+					script.println("</script>");
+				} else {
+					BbsDAO bbsDAO = new BbsDAO();
+					int result = bbsDAO.update(request.getParameter("bbsTitle"), request.getParameter("bbsContent"), bbsID);
+					if (result == -1){
+						PrintWriter script = response.getWriter();
+						script.println("<script>");
+						script.println("alert('글 수정에 실패했습니다.')");
+						script.println("history.back()");
+						script.println("</script>");			
+					}
+					else {
+						PrintWriter script = response.getWriter();
+						script.println("<script>");
+						script.println("location.href = 'bbs.jsp'");
+						script.println("</script>");	
+					}
 				}
 			}
+		} catch(Exception e){
+			e.printStackTrace();
 		}
 	%>
 </body>
