@@ -16,13 +16,6 @@
 		if(session.getAttribute("userID") != null){
 			userID = (String) session.getAttribute("userID");
 		}
-		if (userID == null){
-			PrintWriter script = response.getWriter();
-			script.println("<script>");
-			script.println("alert('로그인을 하세요.')");
-			script.println("location.href = 'login.jsp'");
-			script.println("</script>");	
-		}
 		int bbsID = 0;
 		if (request.getParameter("bbsID") != null){
 			bbsID = Integer.parseInt(request.getParameter("bbsID"));
@@ -30,7 +23,7 @@
 		if (bbsID == 0){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("alert('유요하지 않은 글 입니다.')");
+			script.println("alert('유효하지 않은 글 입니다.')");
 			script.println("history.back()");
 			script.println("</script>");	
 		}
